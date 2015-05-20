@@ -23,18 +23,31 @@
 </head>
 <body>
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-6" data-ng-controller="NotesCtrl">
       <h1>Notes</h1>
-      <ul>
-        <li class="list-group-item"><button class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button> Note 1</li>
-        <li class="list-group-item"><button class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button> Note 1</li>
-      </ul>
-      <div class="input-group">
-        <input class="form-control" type="text" placeholder="Enter note ...">
+
+      <form class="input-group" data-ng-show="!hasPassword">
+        <input autofocus class="form-control" type="password" placeholder="Enter password ..." data-ng-model="password">
         <span class="input-group-btn">
-          <button class="btn btn-default">Add note</button>
+          <button class="btn btn-default" data-ng-click="load()">Set Password</button>
         </span>
-      </div>
+      </form>
+
+      <ul data-ng-show="hasPassword">
+        <li class="list-group-item" data-ng-repeat="note in notes track by $index">
+          <button class="btn btn-danger" data-ng-click="remove($index)">
+            <i class="glyphicon glyphicon-remove"></i>
+          </button>
+          {{note.text}}
+        </li>
+      </ul>
+
+      <form class="input-group" data-ng-show="hasPassword">
+        <input autofocus class="form-control" type="text" placeholder="Enter note ..." data-ng-model="newNote">
+        <span class="input-group-btn">
+          <button class="btn btn-default" data-ng-click="add()">Add note</button>
+        </span>
+      </form>
     </div>
   </div>
 
@@ -45,11 +58,13 @@
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
+
+  <script src="bower_components/sjcl/sjcl.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="app.js"></script>
+  <script src="notes.js"></script>
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
-  <!--<script src="notes/notes.js"></script>-->
 </body>
 </html>

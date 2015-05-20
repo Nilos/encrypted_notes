@@ -1,6 +1,9 @@
 {
   "globalstrict": true,
   "globals": {
+    "sjcl": true,
+    "alert": true,
+    "console": true,
     "angular": false,
     "describe": false,
     "it": false,
