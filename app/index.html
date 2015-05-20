@@ -34,6 +34,10 @@
       </form>
 
       <ul data-ng-show="hasPassword">
+        <div data-ng-if="notes.length === 0">
+          Enter your first note now:
+        </div>
+
         <li class="list-group-item" data-ng-repeat="note in notes track by $index">
           <button class="btn btn-danger" data-ng-click="remove($index)">
             <i class="glyphicon glyphicon-remove"></i>
@@ -61,6 +65,7 @@
 
   <script src="bower_components/sjcl/sjcl.js"></script>
   <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/localforage/dist/localforage.js"></script>
   <script src="app.js"></script>
   <script src="notes.js"></script>
   <script src="components/version/version.js"></script>
