@@ -33,7 +33,9 @@ angular.module('myApp.notes', [])
 			$scope.$apply(function () {
 				if (savedNotes) {
 					try {
-						$scope.notes = JSON.parse(sjcl.decrypt(password, savedNotes));
+						$scope.notes = JSON.parse(
+							sjcl.decrypt(password, savedNotes)
+						);
 						$scope.hasPassword = true;
 					} catch (e) {
 						alert("wrong password");

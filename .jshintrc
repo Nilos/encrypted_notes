@@ -1,6 +1,7 @@
 {
   "globalstrict": true,
   "globals": {
+    "localforage": true,
     "sjcl": true,
     "alert": true,
     "console": true,
